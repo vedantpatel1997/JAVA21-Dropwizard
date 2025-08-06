@@ -25,3 +25,6 @@ public class AppApplication extends Application<AppConfiguration> {
         environment.jersey().register(new LogResource());
     }
 }
+// To run the application, use the following commands in the terminal:
+//  mvn clean package                                                                                      
+// java -jar target/dropwizard-logback-slf4j-demo-1.0-SNAPSHOT.jar server src/main/resources/config.yml
