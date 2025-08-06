@@ -36,7 +36,7 @@ jobs:
       - name: Prepare deployment package
         run: |
           mkdir deploy-package
-          cp target/dropwizard-logback-slf4j-demo-1.0-SNAPSHOT.jar deploy-package/
+          cp target/dropwizard-1.0.jar deploy-package/
           cp src/main/resources/config.yml deploy-package/
           cp startup.sh deploy-package/
           cd deploy-package
