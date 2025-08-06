@@ -32,7 +32,7 @@ jobs:
           mkdir deploy-package
           cp target/dropwizard-1.0.jar deploy-package/
           cp src/main/resources/config.yml deploy-package/
-          cp src/main/resources/web.config deploy-package/
+          cp web.config deploy-package/
           cd deploy-package
           zip -r ../app-package.zip .
 
