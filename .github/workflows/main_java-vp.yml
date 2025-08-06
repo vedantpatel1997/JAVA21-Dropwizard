@@ -34,7 +34,7 @@ jobs:
           cp src/main/resources/config.yml deploy-package/
           cp web.config deploy-package/
           cd deploy-package
-          zip -r ../app-package.zip .
+          Compress-Archive -Path * -DestinationPath ../app-package.zip
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
