@@ -17,10 +17,10 @@ logging:
 
     - type: file
       # Dynamically pick log path from environment variable, fallback to ./logs
-      currentLogFilename: ./log/iservice.log
+      currentLogFilename: /home/LogFiles/iservice.log
       threshold: ALL
       archive: true
-      archivedLogFilenamePattern: ./log/iservice-%d{yyyy-MM-dd}.%i.log
+      archivedLogFilenamePattern: /home/LogFiles/iservice-%d{yyyy-MM-dd}.%i.log
       archivedFileCount: 10
       maxFileSize: 100KB
       timeZone: UTC

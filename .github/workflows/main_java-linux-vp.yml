@@ -75,4 +75,6 @@ jobs:
         with:
           app-name: 'java-linux-vp'
           slot-name: 'Production'
-          package: 'app-package.zip'          
+          package: 'app-package.zip'    
+          clean: true
+          startup-command: 'java -jar /home/site/wwwroot/dropwizard-1.0.jar server /home/site/wwwroot/config.yml'      
