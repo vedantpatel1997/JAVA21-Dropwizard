@@ -27,25 +27,25 @@ jobs:
       - name: Build with Maven
         run: mvn clean install
 
-      - name: Upload artifact for deployment job
-        uses: actions/upload-artifact@v4
-        with:
-          name: java-app
-          path: '${{ github.workspace }}/target/*.jar'
-
-      # - name: Prepare deployment package
-      #   run: |
-      #     mkdir deploy-package
-      #     cp target/*.jar deploy-package/
-      #     cp src/main/resources/config.yml deploy-package/
-      #     cd deploy-package
-      #     zip -r ../app-package.zip .
-
       # - name: Upload artifact for deployment job
       #   uses: actions/upload-artifact@v4
       #   with:
       #     name: java-app
-      #     path: app-package.zip
+      #     path: '${{ github.workspace }}/target/*.jar'
+
+      - name: Prepare deployment package
+        run: |
+          mkdir deploy-package
+          cp target/dropwizard-logback-slf4j-demo-1.0-SNAPSHOT.jar deploy-package/
+          cp src/main/resources/config.yml deploy-package/
+          cd deploy-package
+          zip -r ../app-package.zip .
+
+      - name: Upload artifact for deployment job
+        uses: actions/upload-artifact@v4
+        with:
+          name: java-app
+          path: app-package.zip
 
 
   deploy:
@@ -74,4 +74,4 @@ jobs:
         with:
           app-name: 'java-linux-vp'
           slot-name: 'Production'
-          package: 'dropwizard-logback-slf4j-demo-1.0-SNAPSHOT.jar'          
+          package: 'app-package.zip'          
