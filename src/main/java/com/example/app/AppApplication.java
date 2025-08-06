@@ -3,6 +3,9 @@ package com.example.app;
 import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
+// Add these imports:
+import io.dropwizard.configuration.EnvironmentVariableSubstitutor;
+import io.dropwizard.configuration.SubstitutingSourceProvider;
 import com.example.app.resources.LogResource;
 
 public class AppApplication extends Application<AppConfiguration> {
@@ -17,7 +20,13 @@ public class AppApplication extends Application<AppConfiguration> {
 
     @Override
     public void initialize(Bootstrap<AppConfiguration> bootstrap) {
-        // no-op
+        // Enable ${HTTP_PLATFORM_PORT} substitution in config.yml:
+        bootstrap.setConfigurationSourceProvider(
+            new SubstitutingSourceProvider(
+                bootstrap.getConfigurationSourceProvider(),
+                new EnvironmentVariableSubstitutor(false)
+            )
+        );
     }
 
     @Override
@@ -25,6 +34,3 @@ public class AppApplication extends Application<AppConfiguration> {
         environment.jersey().register(new LogResource());
     }
 }
-// To run the application, use the following commands in the terminal:
-//  mvn clean package                                                                                      
-// java -jar target/dropwizard-logback-slf4j-demo-1.0-SNAPSHOT.jar server src/main/resources/config.yml

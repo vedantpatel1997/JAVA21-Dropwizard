@@ -69,4 +69,4 @@ jobs:
           app-name: 'java-vp'
           slot-name: 'Production'
           package: 'app-package.zip'    
-          
+          clean: true
