@@ -1,0 +1,26 @@
+server:
+  applicationConnectors:
+    - type: http
+      port: 8000  # Required for Azure Windows Web Apps
+
+  adminConnectors:
+    - type: http
+      port: 8081  # Internal admin port
+
+logging:
+  level: INFO
+  loggers:
+    "io.dropwizard": INFO
+
+  appenders:
+    - type: console
+
+    - type: file
+      # Dynamically pick log path from environment variable, fallback to ./logs
+      currentLogFilename: ./log/iservice.log
+      threshold: ALL
+      archive: true
+      archivedLogFilenamePattern: ./log/iservice-%d{yyyy-MM-dd}.%i.log
+      archivedFileCount: 10
+      maxFileSize: 100KB
+      timeZone: UTC
