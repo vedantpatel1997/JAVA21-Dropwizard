@@ -1,7 +1,7 @@
 server:
   applicationConnectors:
     - type: http
-      port: 8080  # Required for Azure Windows Web Apps
+      port: 5000  # Required for Azure Windows Web Apps
 
   adminConnectors:
     - type: http
