@@ -38,6 +38,7 @@ jobs:
           mkdir deploy-package
           cp target/dropwizard-logback-slf4j-demo-1.0-SNAPSHOT.jar deploy-package/
           cp src/main/resources/config.yml deploy-package/
+          cp startup.sh deploy-package/
           cd deploy-package
           zip -r ../app-package.zip .
 
