@@ -5,7 +5,7 @@ server:
       port: !!int ${HTTP_PLATFORM_PORT:-8080}  # Use env var or fallback to 8080
       # Windows web app will require default HTTP_PLATFORM_PORT env variable.
       # Linux web app will use the default port 8080 specified in PORT :8080 in web app
-      
+
   adminConnectors:
     - type: http
       port: 8082  # Internal admin port
@@ -20,10 +20,10 @@ logging:
 
     - type: file
       # Dynamically pick log path from environment variable, fallback to ./logs
-      currentLogFilename: /home/LogFiles/iservice.log
+      currentLogFilename: /home/LogFiles/customLogs/iservice.log
       threshold: ALL
       archive: true
-      archivedLogFilenamePattern: /home/LogFiles/iservice-%d{yyyy-MM-dd}.%i.log
+      archivedLogFilenamePattern: /home/LogFiles/customLogs/iservice-%d{yyyy-MM-dd}.%i.log
       archivedFileCount: 10
       maxFileSize: 100KB
       timeZone: UTC
