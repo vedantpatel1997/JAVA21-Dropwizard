@@ -6,7 +6,7 @@ name: Build and deploy JAR app to Azure Web App - java-linux-vp
 on:
   push:
     branches:
-      - main
+      - main123
   workflow_dispatch:
 
 jobs:
@@ -38,7 +38,6 @@ jobs:
           mkdir deploy-package
           cp target/dropwizard-1.0.jar deploy-package/
           cp src/main/resources/config.yml deploy-package/
-          cp startup.sh deploy-package/
           cd deploy-package
           zip -r ../app-package.zip .
 
