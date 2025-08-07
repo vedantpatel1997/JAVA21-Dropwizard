@@ -70,13 +70,11 @@ jobs:
           slot-name: 'Production'
           package: 'app-package.zip'    
           clean: true
-
+          
       - name: 'Set App Settings'
+        shell: pwsh
         run: |
-          az webapp config appsettings set \
-            --name java-vp \
-            --resource-group TempRG \
-            --settings \
-              WEBSITE_HTTPLOGGING_RETENTION_DAYS=5 \
-              HTTP_PLATFORM_PORT=5000 \
-              LOG_DIR_PATH=C:/mounts/customLogs/WindowsApp
+          az webapp config appsettings set `
+            --name java-vp `
+            --resource-group TempRG `
+            --settings WEBSITE_HTTPLOGGING_RETENTION_DAYS=5 HTTP_PLATFORM_PORT=5000 LOG_DIR_PATH=C:/mounts/customLogs/WindowsApp
