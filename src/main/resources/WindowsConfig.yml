@@ -22,7 +22,7 @@ logging:
       currentLogFilename: C:/mounts/customLogs/WindowsApp/iservice.log
       threshold: ALL
       archive: true
-      archivedLogFilenamePattern: C:/mounts/customLogs/WindowsApp/iservice-%d{yyyy-MM-dd_HH}.%i.log.gz
+      archivedLogFilenamePattern: C:/mounts/customLogs/WindowsApp/iservice-%d{yyyy-MM-dd_HH}.%i.log
       archivedFileCount: 10
       maxFileSize: 100KB
       timeZone: UTC
