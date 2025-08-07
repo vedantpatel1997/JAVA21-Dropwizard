@@ -19,14 +19,14 @@ logging:
     - type: console
 
     - type: file
-      # Dynamically pick log path from environment variable, fallback to ./logs
-      currentLogFilename: /mounts/customLogs/WindowsApp/iservice.log
+      currentLogFilename: C:/mounts/customLogs/WindowsApp/iservice.log
       threshold: ALL
       archive: true
-      archivedLogFilenamePattern: /mounts/customLogs/WindowsApp/iservice-%d{yyyy-MM-dd}.%i.log
+      archivedLogFilenamePattern: C:/mounts/customLogs/WindowsApp/iservice-%d{yyyy-MM-dd_HH}.%i.log.gz
       archivedFileCount: 10
       maxFileSize: 100KB
       timeZone: UTC
+
 
 # server:
 #   applicationConnectors:
