@@ -1,10 +1,10 @@
 package com.example.app.resources;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.Path;
+import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
 
 @Path("/")
 public class HomeResource {
@@ -111,7 +111,7 @@ public class HomeResource {
             <body>
                 <div class="container">
                     <header>
-                        <h1>JAVA 21 Dropwizard - VEDANT PATEL - 3.0</h1>
+                        <h1>JAVA 21 Dropwizard(4.0.15) - VEDANT PATEL - 3.1</h1>
                         <p class="subtitle">
                             A production-ready Java service deployed on Azure <strong>%s</strong> App Service<br>
                         </p>

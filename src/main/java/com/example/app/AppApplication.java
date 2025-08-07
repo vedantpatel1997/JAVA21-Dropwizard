@@ -1,11 +1,10 @@
 package com.example.app;
 
-import io.dropwizard.Application;
-import io.dropwizard.setup.Bootstrap;
-import io.dropwizard.setup.Environment;
-// Add these imports:
 import io.dropwizard.configuration.EnvironmentVariableSubstitutor;
 import io.dropwizard.configuration.SubstitutingSourceProvider;
+import io.dropwizard.core.Application;
+import io.dropwizard.core.setup.Bootstrap;
+import io.dropwizard.core.setup.Environment;
 
 import com.example.app.resources.EnvResource;
 import com.example.app.resources.HomeResource;
@@ -13,6 +12,7 @@ import com.example.app.resources.LogFileResource;
 import com.example.app.resources.LogResource;
 
 public class AppApplication extends Application<AppConfiguration> {
+
     public static void main(String[] args) throws Exception {
         new AppApplication().run(args);
     }
@@ -24,11 +24,11 @@ public class AppApplication extends Application<AppConfiguration> {
 
     @Override
     public void initialize(Bootstrap<AppConfiguration> bootstrap) {
-        // Enable ${HTTP_PLATFORM_PORT} substitution in config.yml:
         bootstrap.setConfigurationSourceProvider(
                 new SubstitutingSourceProvider(
                         bootstrap.getConfigurationSourceProvider(),
-                        new EnvironmentVariableSubstitutor(false)));
+                        new EnvironmentVariableSubstitutor(false) // "strict = false"
+                ));
     }
 
     @Override
@@ -40,6 +40,7 @@ public class AppApplication extends Application<AppConfiguration> {
     }
 }
 
-// To build and run the application, use these commands:
+// To run this application, you need to have Maven and Java installed. 
+// Run the below commands in your terminal:
 // mvn clean package
-// java -jar target/dropwizard-1.0.jar server src/main/resources/WindowsConfig.yml       
+// java -jar target/dropwizard-1.0.jar server src/main/resources/WindowsConfig.yml
