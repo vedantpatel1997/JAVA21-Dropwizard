@@ -13,16 +13,6 @@
         <maven.compiler.target>21</maven.compiler.target>
         <dropwizard.version>4.0.15</dropwizard.version>
     </properties>
-
-    <!-- Add this -->
-    <repositories>
-        <repository>
-            <id>sonatype-public</id>
-            <name>Sonatype OSS</name>
-            <url>https://oss.sonatype.org/content/groups/public/</url>
-        </repository>
-    </repositories>
-
     <dependencies>
         <dependency>
             <groupId>io.dropwizard</groupId>
