@@ -111,10 +111,9 @@ public class HomeResource {
             <body>
                 <div class="container">
                     <header>
-                        <h1>JAVA 21 Dropwizard - VEDANT PATEL - 2.6</h1>
+                        <h1>JAVA 21 Dropwizard - VEDANT PATEL - 2.7</h1>
                         <p class="subtitle">
-                            A production-ready Java service deployed on Azure App Service<br>
-                            Running on OS: <strong>%s</strong>
+                            A production-ready Java service deployed on Azure <strong>%s</strong> App Service<br>
                         </p>
                     </header>
 
