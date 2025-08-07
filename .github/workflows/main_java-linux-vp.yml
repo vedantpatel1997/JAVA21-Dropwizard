@@ -37,7 +37,7 @@ jobs:
         run: |
           mkdir deploy-package
           cp target/dropwizard-1.0.jar deploy-package/
-          cp src/main/resources/config.yml deploy-package/
+          cp src/main/resources/LinuxConfig.yml deploy-package/
           cd deploy-package
           zip -r ../app-package.zip .
 
@@ -76,4 +76,4 @@ jobs:
           slot-name: 'Production'
           package: 'app-package.zip'    
           clean: true
-          startup-command: 'java -jar /home/site/wwwroot/dropwizard-1.0.jar server /home/site/wwwroot/config.yml'      
+          startup-command: 'java -jar /home/site/wwwroot/dropwizard-1.0.jar server /home/site/wwwroot/LinuxConfig.yml'      

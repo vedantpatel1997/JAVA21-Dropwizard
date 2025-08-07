@@ -31,7 +31,7 @@ jobs:
         run: |
           mkdir deploy-package
           cp target/dropwizard-1.0.jar deploy-package/
-          cp src/main/resources/config.yml deploy-package/
+          cp src/main/resources/WindowsConfig.yml deploy-package/
           cp web.config deploy-package/
           cd deploy-package
           Compress-Archive -Path * -DestinationPath ../app-package.zip
