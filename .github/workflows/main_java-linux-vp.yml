@@ -77,3 +77,13 @@ jobs:
           package: 'app-package.zip'    
           clean: true
           startup-command: 'java -jar /home/site/wwwroot/dropwizard-1.0.jar server /home/site/wwwroot/LinuxConfig.yml'      
+
+      - name: 'Set App Settings'
+        run: |
+          az webapp config appsettings set \
+            --name java-linux-vp \
+            --resource-group TempRG \
+            --settings \
+              PORT=5000 \
+              WEBSITE_HTTPLOGGING_RETENTION_DAYS=5 \
+              LOG_DIR_PATH=/home/LogFiles/customLogs/LinuxApp

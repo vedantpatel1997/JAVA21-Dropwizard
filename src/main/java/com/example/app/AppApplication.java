@@ -9,6 +9,7 @@ import io.dropwizard.configuration.SubstitutingSourceProvider;
 
 import com.example.app.resources.EnvResource;
 import com.example.app.resources.HomeResource;
+import com.example.app.resources.LogFileResource;
 import com.example.app.resources.LogResource;
 
 public class AppApplication extends Application<AppConfiguration> {
@@ -35,5 +36,10 @@ public class AppApplication extends Application<AppConfiguration> {
         environment.jersey().register(new LogResource());
         environment.jersey().register(new HomeResource());
         environment.jersey().register(new EnvResource());
+        environment.jersey().register(new LogFileResource());
     }
 }
+
+// To build and run the application, use these commands:
+// mvn clean package
+// java -jar target/dropwizard-1.0.jar server src/main/resources/WindowsConfig.yml       

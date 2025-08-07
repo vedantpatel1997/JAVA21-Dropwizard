@@ -1,6 +1,8 @@
 package com.example.app.resources;
 
-import javax.ws.rs.*;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
@@ -16,190 +18,141 @@ public class HomeResource {
             <head>
                 <meta charset="UTF-8">
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <title>Dropwizard App | Azure Deployment</title>
-                <link rel="preconnect" href="https://fonts.googleapis.com">
-                <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-                <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+                <title>Vedant Patel - Dropwizard on Azure</title>
                 <style>
-                    :root {
-                        --primary: #2563eb;
-                        --primary-hover: #1d4ed8;
-                        --background: #f8fafc;
-                        --card: #ffffff;
-                        --text: #1e293b;
-                        --text-secondary: #64748b;
-                        --border: #e2e8f0;
-                        --error: #ef4444;
-                        --code-bg: #f1f5f9;
-                    }
-                    
-                    * {
-                        box-sizing: border-box;
+                    body {
+                        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                        background-color: #f4f4f4;
                         margin: 0;
                         padding: 0;
-                    }
-                    
-                    body {
-                        font-family: 'Inter', system-ui, -apple-system, sans-serif;
-                        background-color: var(--background);
-                        color: var(--text);
-                        line-height: 1.5;
-                        min-height: 100vh;
-                        padding: 2rem 1rem;
                         display: flex;
-                        flex-direction: column;
+                        justify-content: center;
                         align-items: center;
+                        height: 100vh;
                     }
-                    
+
                     .container {
-                        width: 100%;
-                        max-width: 800px;
-                        margin: 0 auto;
+                        width: 90%;
+                        max-width: 900px;
+                        margin: auto;
                     }
-                    
+
                     header {
                         text-align: center;
-                        margin-bottom: 2.5rem;
+                        margin-bottom: 20px;
                     }
-                    
+
                     h1 {
-                        font-size: 2rem;
-                        font-weight: 600;
-                        margin-bottom: 0.5rem;
-                        color: var(--primary);
+                        color: #2c3e50;
+                        margin-bottom: 5px;
                     }
-                    
+
                     .subtitle {
-                        color: var(--text-secondary);
-                        font-size: 1.1rem;
-                        max-width: 600px;
-                        margin: 0 auto;
+                        font-size: 1.1em;
+                        color: #666;
                     }
-                    
+
                     .card {
-                        background-color: var(--card);
-                        border-radius: 0.5rem;
-                        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.1);
-                        padding: 2rem;
-                        margin-bottom: 2rem;
-                        width: 100%;
+                        background-color: white;
+                        padding: 20px;
+                        border-radius: 12px;
+                        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
                     }
-                    
+
                     .button-group {
+                        margin-bottom: 20px;
                         display: flex;
-                        gap: 1rem;
-                        flex-wrap: wrap;
-                        margin-bottom: 1.5rem;
                         justify-content: center;
+                        gap: 10px;
                     }
-                    
+
                     button {
-                        padding: 0.75rem 1.5rem;
-                        font-size: 0.95rem;
-                        font-weight: 500;
+                        padding: 10px 20px;
+                        font-size: 1em;
                         border: none;
-                        border-radius: 0.375rem;
-                        background-color: var(--primary);
+                        border-radius: 5px;
+                        background-color: #3498db;
                         color: white;
                         cursor: pointer;
-                        transition: background-color 0.15s ease-in-out;
+                        transition: background-color 0.3s ease;
                     }
-                    
+
                     button:hover {
-                        background-color: var(--primary-hover);
+                        background-color: #2980b9;
                     }
-                    
-                    #status {
-                        margin: 1rem 0;
-                        font-size: 0.9rem;
-                        color: var(--text-secondary);
-                        text-align: center;
-                        min-height: 1.5rem;
-                    }
-                    
+
                     #output {
-                        padding: 1.25rem;
-                        background-color: var(--code-bg);
-                        border-radius: 0.375rem;
+                        background-color: #f9f9f9;
+                        padding: 15px;
+                        border: 1px solid #ddd;
+                        border-radius: 5px;
+                        height: 300px;
+                        overflow-y: auto;
                         white-space: pre-wrap;
-                        word-wrap: break-word;
-                        font-family: 'Menlo', 'Consolas', monospace;
-                        font-size: 0.875rem;
-                        line-height: 1.7;
                     }
-                    
-                    #output:empty::before {
-                        content: "Response will appear here...";
-                        color: var(--text-secondary);
-                        font-style: italic;
+
+                    #status {
+                        font-weight: bold;
+                        margin-bottom: 10px;
+                        color: #2c3e50;
                     }
-                    
+
                     footer {
-                        margin-top: 3rem;
-                        font-size: 0.875rem;
-                        color: var(--text-secondary);
                         text-align: center;
-                    }
-                    
-                    @media (max-width: 640px) {
-                        .container {
-                            padding: 0 1rem;
-                        }
-                        
-                        .card {
-                            padding: 1.5rem;
-                        }
+                        margin-top: 30px;
+                        font-size: 0.9em;
+                        color: #888;
                     }
                 </style>
             </head>
             <body>
                 <div class="container">
                     <header>
-                        <h1>JAVA 21 Dropwizard - VEDANT PATEL - 2.1<h1>
+                        <h1>JAVA 21 Dropwizard - VEDANT PATEL - 2.2</h1>
                         <p class="subtitle">
                             A production-ready Java service deployed on Azure App Service
                         </p>
                     </header>
-                    
+
                     <main class="card">
                         <div class="button-group">
                             <button onclick="callEndpoint('/log')">Test Logging</button>
                             <button onclick="callEndpoint('/env')">View Environment</button>
+                            <button onclick="callEndpoint('/logs')">View Logs</button>
                         </div>
-                        
+
                         <div id="status"></div>
-                        
+
                         <pre id="output"></pre>
                     </main>
-                    
+
                     <footer>
-                        <p>Deployed on Azure App Service (Linux & Windows)• Built with Dropwizard • Java 21 • Github Action</p>
+                        <p>Deployed on Azure App Service (Linux & Windows) • Built with Dropwizard • Java 21 • GitHub Actions</p>
                     </footer>
                 </div>
 
                 <script>
                     function formatJson(json) {
                         try {
-                            // Parse and re-stringify to ensure proper formatting
                             return JSON.stringify(JSON.parse(json), null, 2);
                         } catch (e) {
-                            return json; // Return as-is if not JSON
+                            return json;
                         }
                     }
 
                     async function callEndpoint(endpoint) {
                         const output = document.getElementById('output');
                         const status = document.getElementById('status');
-                        
+
                         output.textContent = '';
                         status.textContent = 'Calling ' + endpoint + '...';
-                        
+
                         try {
                             const response = await fetch(endpoint);
                             const data = await response.text();
-                            
+
                             status.textContent = `Response from ${endpoint} (Status: ${response.status})`;
-                            
+
                             if (response.ok) {
                                 output.textContent = formatJson(data);
                             } else {
@@ -213,7 +166,7 @@ public class HomeResource {
                 </script>
             </body>
             </html>
-            """;
+        """;
 
         return Response.ok(html).build();
     }

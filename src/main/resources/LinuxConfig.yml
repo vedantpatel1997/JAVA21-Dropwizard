@@ -20,10 +20,10 @@ logging:
 
     - type: file
       # Dynamically pick log path from environment variable, fallback to ./logs
-      currentLogFilename: /home/LogFiles/customLogs/LinuxApp/iservice.log
+      currentLogFilename: ${LOG_DIR_PATH:-/home/LogFiles/customLogs/LinuxApp}/iservice.log
       threshold: ALL
       archive: true
-      archivedLogFilenamePattern: /home/LogFiles/customLogs/LinuxApp/iservice-%d{yyyy-MM-dd}.%i.log
+      archivedLogFilenamePattern: ${LOG_DIR_PATH:-/home/LogFiles/customLogs/LinuxApp}/iservice-%d{yyyy-MM-dd}.%i.log
       archivedFileCount: 10
       maxFileSize: 100KB
       timeZone: UTC
