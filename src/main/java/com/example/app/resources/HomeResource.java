@@ -12,7 +12,10 @@ public class HomeResource {
     @GET
     @Produces(MediaType.TEXT_HTML)
     public Response getHomePage() {
-        String html = """
+        String osName = System.getProperty("os.name");
+
+        // Inject osName dynamically into the string
+        String html = String.format("""
             <!DOCTYPE html>
             <html lang="en">
             <head>
@@ -32,7 +35,7 @@ public class HomeResource {
                     }
 
                     .container {
-                        width: 90%;
+                        width: 90%%;
                         max-width: 900px;
                         margin: auto;
                     }
@@ -108,9 +111,10 @@ public class HomeResource {
             <body>
                 <div class="container">
                     <header>
-                        <h1>JAVA 21 Dropwizard - VEDANT PATEL - 2.5</h1>
+                        <h1>JAVA 21 Dropwizard - VEDANT PATEL - 2.6</h1>
                         <p class="subtitle">
-                            A production-ready Java service deployed on Azure App Service
+                            A production-ready Java service deployed on Azure App Service<br>
+                            Running on OS: <strong>%s</strong>
                         </p>
                     </header>
 
@@ -122,7 +126,6 @@ public class HomeResource {
                         </div>
 
                         <div id="status"></div>
-
                         <pre id="output"></pre>
                     </main>
 
@@ -166,7 +169,7 @@ public class HomeResource {
                 </script>
             </body>
             </html>
-        """;
+        """, osName);
 
         return Response.ok(html).build();
     }
