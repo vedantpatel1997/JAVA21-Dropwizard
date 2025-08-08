@@ -62,11 +62,9 @@ jobs:
           name: java-app
       
       - name: Login to Azure
-        uses: azure/login@v2
+        uses: azure/login@v1
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_9044D15918694E17B246A9CD765201A6 }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_B3484E7360D84996922E0F2F13038278 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_BD6DEB2FB8B64B66AAFFEC2AADAFA87D }}
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
 
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
@@ -82,6 +80,26 @@ jobs:
         run: |
           az webapp config appsettings set \
             --name java-linux-vp \
+            --resource-group TempRG \
+            --settings \
+              PORT=5000 \
+              WEBSITE_HTTPLOGGING_RETENTION_DAYS=5 \
+              LOG_DIR_PATH=/home/LogFiles/customLogs/LinuxApp
+
+      - name: Deploy to Azure Web App QA slot
+        id: deploy-to-webapp-qa-slot
+        uses: azure/webapps-deploy@v3
+        with:
+          app-name: 'java-linux-vp'
+          slot-name: 'qa'
+          package: 'app-package.zip'    
+          clean: true
+          startup-command: 'java -jar /home/site/wwwroot/dropwizard-1.0.jar server /home/site/wwwroot/LinuxConfig.yml'      
+
+      - name: 'Set App Settings'
+        run: |
+          az webapp config appsettings set \
+            --name java-linux-vp-qa \
             --resource-group TempRG \
             --settings \
               PORT=5000 \
