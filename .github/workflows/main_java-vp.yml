@@ -92,6 +92,7 @@ jobs:
         shell: pwsh
         run: |
           az webapp config appsettings set `
-            --name java-vp-qa `
+            --name java-vp `
+            --slot qa `
             --resource-group TempRG `
             --settings WEBSITE_HTTPLOGGING_RETENTION_DAYS=5 LOG_DIR_PATH=/home/LogFiles/customLogs/WindowsApp

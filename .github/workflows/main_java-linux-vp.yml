@@ -99,8 +99,9 @@ jobs:
       - name: 'Set App Settings'
         run: |
           az webapp config appsettings set \
-            --name java-linux-vp-qa \
+            --name java-linux-vp \
             --resource-group TempRG \
+            --slot qa \
             --settings \
               PORT=5000 \
               WEBSITE_HTTPLOGGING_RETENTION_DAYS=5 \
