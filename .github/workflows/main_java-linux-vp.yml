@@ -84,7 +84,7 @@ jobs:
             --settings \
               PORT=5000 \
               WEBSITE_HTTPLOGGING_RETENTION_DAYS=5 \
-              LOG_DIR_PATH=/home/LogFiles/customLogs/LinuxApp
+              LOG_DIR_PATH=/home/CustomLogs/LinuxApp
 
       - name: Deploy to Azure Web App QA slot
         id: deploy-to-webapp-qa-slot
@@ -105,4 +105,4 @@ jobs:
             --settings \
               PORT=5000 \
               WEBSITE_HTTPLOGGING_RETENTION_DAYS=5 \
-              LOG_DIR_PATH=/home/LogFiles/customLogs/LinuxApp
+              LOG_DIR_PATH=/home/CustomLogs/LinuxApp
