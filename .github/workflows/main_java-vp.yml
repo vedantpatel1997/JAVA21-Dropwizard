@@ -132,4 +132,4 @@ jobs:
             --name java-win-api-app `
             --slot qa `
             --resource-group TempRG `
-            --settings WEBSITE_HTTPLOGGING_RETENTION_DAYS=5 LOG_DIR_PATH=/home/LogFiles/customLogs/WindowsApp HTTP_ADMINConnector_PORT=8091
+            --settings WEBSITE_HTTPLOGGING_RETENTION_DAYS=5 LOG_DIR_PATH=/home/LogFiles/customLogs/WindowsApp HTTP_ADMINCONNECTOR_PORT=5002
