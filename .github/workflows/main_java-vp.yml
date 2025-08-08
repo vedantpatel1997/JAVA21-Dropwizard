@@ -61,14 +61,14 @@ jobs:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
  
 # -----------------------------------------------------------------
-  
-      - name: 'Set App Settings'
-        shell: pwsh
-        run: |
-          az webapp config appsettings set `
-          --name java-vp `
-          --resource-group TempRG `
-          --settings WEBSITE_HTTPLOGGING_RETENTION_DAYS=5 LOG_DIR_PATH=/home/CustomLogs/WindowsApp HTTP_ADMINCONNECTOR_PORT=5001
+
+      # - name: 'Set App Settings'
+      #   shell: pwsh
+      #   run: |
+      #     az webapp config appsettings set `
+      #     --name java-vp `
+      #     --resource-group TempRG `
+      #     --settings WEBSITE_HTTPLOGGING_RETENTION_DAYS=5 LOG_DIR_PATH=/home/CustomLogs/WindowsApp HTTP_ADMINCONNECTOR_PORT=5001
 
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
@@ -82,14 +82,14 @@ jobs:
           
 # -----------------------------------------------------------------
 
-      - name: 'Set App Settings'
-        shell: pwsh
-        run: |
-          az webapp config appsettings set `
-            --name java-vp `
-            --slot qa `
-            --resource-group TempRG `
-            --settings WEBSITE_HTTPLOGGING_RETENTION_DAYS=5 LOG_DIR_PATH=/home/CustomLogs/WindowsApp HTTP_ADMINCONNECTOR_PORT=5002
+      # - name: 'Set App Settings'
+      #   shell: pwsh
+      #   run: |
+      #     az webapp config appsettings set `
+      #       --name java-vp `
+      #       --slot qa `
+      #       --resource-group TempRG `
+      #       --settings WEBSITE_HTTPLOGGING_RETENTION_DAYS=5 LOG_DIR_PATH=/home/CustomLogs/WindowsApp HTTP_ADMINCONNECTOR_PORT=5002
       
       - name: Deploy to Azure Web App QA slot
         id: deploy-to-webapp-qa-slot
@@ -103,13 +103,13 @@ jobs:
 
 # -----------------------------------------------------------------
 
-      - name: 'Set App Settings'
-        shell: pwsh
-        run: |
-          az webapp config appsettings set `
-            --name java-win-api-app `
-            --resource-group TempRG `
-            --settings WEBSITE_HTTPLOGGING_RETENTION_DAYS=5 LOG_DIR_PATH=/home/CustomLogs/WindowsApp HTTP_ADMINCONNECTOR_PORT=5003
+      # - name: 'Set App Settings'
+      #   shell: pwsh
+      #   run: |
+      #     az webapp config appsettings set `
+      #       --name java-win-api-app `
+      #       --resource-group TempRG `
+      #       --settings WEBSITE_HTTPLOGGING_RETENTION_DAYS=5 LOG_DIR_PATH=/home/CustomLogs/WindowsApp HTTP_ADMINCONNECTOR_PORT=5003
 
       - name: Deploy to Azure Web App java-win-api-app
         id: deploy-to-java-win-api-app
@@ -123,14 +123,14 @@ jobs:
 
 # -----------------------------------------------------------------
 
-      - name: 'Set App Settings'
-        shell: pwsh
-        run: |
-          az webapp config appsettings set `
-            --name java-win-api-app `
-            --slot qa `
-            --resource-group TempRG `
-            --settings WEBSITE_HTTPLOGGING_RETENTION_DAYS=5 LOG_DIR_PATH=/home/CustomLogs/WindowsApp HTTP_ADMINCONNECTOR_PORT=5004
+      # - name: 'Set App Settings'
+      #   shell: pwsh
+      #   run: |
+      #     az webapp config appsettings set `
+      #       --name java-win-api-app `
+      #       --slot qa `
+      #       --resource-group TempRG `
+      #       --settings WEBSITE_HTTPLOGGING_RETENTION_DAYS=5 LOG_DIR_PATH=/home/CustomLogs/WindowsApp HTTP_ADMINCONNECTOR_PORT=5004
   
       - name: Deploy to Azure Web App java-win-api-qa app
         id: deploy-to-java-win-api-app-qa
