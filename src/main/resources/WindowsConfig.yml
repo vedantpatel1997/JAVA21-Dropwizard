@@ -8,7 +8,7 @@ server:
 
   adminConnectors:
     - type: http
-      port: 8082  # Internal admin port
+      port: ${HTTP_ADMINConnector_PORT:-8090}   # Internal admin port
 
 logging:
   level: INFO

@@ -95,4 +95,4 @@ jobs:
             --name java-vp `
             --slot qa `
             --resource-group TempRG `
-            --settings WEBSITE_HTTPLOGGING_RETENTION_DAYS=5 LOG_DIR_PATH=/home/LogFiles/customLogs/WindowsApp
+            --settings WEBSITE_HTTPLOGGING_RETENTION_DAYS=5 LOG_DIR_PATH=/home/LogFiles/customLogs/WindowsApp HTTP_ADMINConnector_PORT=8091
