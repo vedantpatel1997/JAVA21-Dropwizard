@@ -69,7 +69,23 @@ jobs:
       #     --name java-vp `
       #     --resource-group TempRG `
       #     --settings WEBSITE_HTTPLOGGING_RETENTION_DAYS=5 LOG_DIR_PATH=/home/CustomLogs/WindowsApp HTTP_ADMINCONNECTOR_PORT=5001
-
+      # [
+      #   {
+      #     "name": "WEBSITE_HTTPLOGGING_RETENTION_DAYS",
+      #     "value": "5",
+      #     "slotSetting": true
+      #   },
+      #   {
+      #     "name": "LOG_DIR_PATH",
+      #     "value": "/home/CustomLogs/WindowsApp",
+      #     "slotSetting": true
+      #   },
+      #   {
+      #     "name": "HTTP_ADMINCONNECTOR_PORT",
+      #     "value": "5001",
+      #     "slotSetting": true
+      #   }
+      # ]
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
         
