@@ -70,7 +70,7 @@ jobs:
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
         with:
-          app-name: 'java-linux-vp'
+          app-name: 'java-sp'
           slot-name: 'Production'
           package: 'app-package.zip'    
           clean: true
@@ -86,16 +86,7 @@ jobs:
       #         WEBSITE_HTTPLOGGING_RETENTION_DAYS=5 \
       #         LOG_DIR_PATH=/home/CustomLogs/LinuxApp
 
-      - name: Deploy to Azure Web App QA slot
-        id: deploy-to-webapp-qa-slot
-        uses: azure/webapps-deploy@v3
-        with:
-          app-name: 'java-sp'
-          slot-name: 'production'
-          package: 'app-package.zip'    
-          clean: true
-          startup-command: 'java -jar /home/site/wwwroot/dropwizard-1.0.jar server /home/site/wwwroot/LinuxConfig.yml'      
-
+     
       - name: 'Set App Settings'
         run: |
           az webapp config appsettings set \
