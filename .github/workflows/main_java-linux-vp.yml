@@ -6,7 +6,7 @@ name: Build and deploy JAR app to Azure Web App - java-linux-vp
 on:
   push:
     branches:
-      - main
+      - main1
   workflow_dispatch:
 
 jobs:

@@ -16,13 +16,17 @@ logging:
     "io.dropwizard": INFO
 
   appenders:
-    - type: console
+    # Async wrapper for console logging
+    - type: async
+      appender:
+        type: console
+        threshold: ALL
 
+    # File appender with rotation
     - type: file
       currentLogFilename: ${LOG_DIR_PATH:-C:/mounts/customLogs/WindowsApp}/iservice.log
       threshold: ALL
       archive: true
-      # archivedLogFilenamePattern: ${LOG_DIR_PATH:-C:/mounts/customLogs/WindowsApp}/iservice-%d{yyyy-MM-dd_HH}.%i.log
       archivedLogFilenamePattern: ${LOG_DIR_PATH:-C:/mounts/customLogs/WindowsApp}/iservice-%d{yyyy-MM-dd}.%i.log
       archivedFileCount: 10
       maxFileSize: 100KB
