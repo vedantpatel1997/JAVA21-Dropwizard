@@ -28,7 +28,8 @@ logging:
     #   maxFileSize: 100KB
     #   timeZone: UTC
     - type: file
-      currentLogFilename: ${LOG_DIR_PATH:-C:/mounts/customLogs/WindowsApp}/iservice-${WEBSITE_INSTANCE_ID:-local}.log
-      archivedLogFilenamePattern: ${LOG_DIR_PATH:-C:/mounts/customLogs/WindowsApp}/iservice-${WEBSITE_INSTANCE_ID:-local}-%d{yyyy-MM-dd}.%i.log
-      archivedFileCount: 10
-      maxFileSize: 100KB
+       # Current log file per app + slot + computer + instance
+       currentLogFilename: ${LOG_DIR_PATH:-C:/mounts/customLogs/WindowsApp}/iservice-${WEBSITE_SITE_NAME:-unknown}-${WEBSITE_SLOT_NAME:-unknown}-${COMPUTERNAME:-unknown}.log
+       
+       # Rotated log pattern
+       archivedLogFilenamePattern: ${LOG_DIR_PATH:-C:/mounts/customLogs/WindowsApp}/iservice-${WEBSITE_SITE_NAME:-unknown}-${WEBSITE_SLOT_NAME:-unknown}-${COMPUTERNAME:-unknown}.%i.log

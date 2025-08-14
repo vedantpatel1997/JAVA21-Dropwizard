@@ -95,5 +95,15 @@ jobs:
           slot-name: 'Production'
           package: 'app-package.zip'    
           clean: true
+
+      - name: Deploy to Azure Web App slot
+        id: deploy-to-webapp-slot
+        
+        uses: azure/webapps-deploy@v3
+        with:
+          app-name: 'java-windows'
+          slot-name: 'dev'
+          package: 'app-package.zip'    
+          clean: true
           
           
