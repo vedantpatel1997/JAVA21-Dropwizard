@@ -18,12 +18,17 @@ logging:
   appenders:
     - type: console
 
+    # - type: file
+    #   currentLogFilename: ${LOG_DIR_PATH:-C:/mounts/customLogs/WindowsApp}/iservice.log
+    #   threshold: ALL
+    #   archive: true
+    #   # archivedLogFilenamePattern: ${LOG_DIR_PATH:-C:/mounts/customLogs/WindowsApp}/iservice-%d{yyyy-MM-dd_HH}.%i.log
+    #   archivedLogFilenamePattern: ${LOG_DIR_PATH:-C:/mounts/customLogs/WindowsApp}/iservice-%d{yyyy-MM-dd}.%i.log
+    #   archivedFileCount: 10
+    #   maxFileSize: 100KB
+    #   timeZone: UTC
     - type: file
-      currentLogFilename: ${LOG_DIR_PATH:-C:/mounts/customLogs/WindowsApp}/iservice.log
-      threshold: ALL
-      archive: true
-      # archivedLogFilenamePattern: ${LOG_DIR_PATH:-C:/mounts/customLogs/WindowsApp}/iservice-%d{yyyy-MM-dd_HH}.%i.log
-      archivedLogFilenamePattern: ${LOG_DIR_PATH:-C:/mounts/customLogs/WindowsApp}/iservice-%d{yyyy-MM-dd}.%i.log
+      currentLogFilename: ${LOG_DIR_PATH:-C:/mounts/customLogs/WindowsApp}/iservice-${WEBSITE_INSTANCE_ID:-local}.log
+      archivedLogFilenamePattern: ${LOG_DIR_PATH:-C:/mounts/customLogs/WindowsApp}/iservice-${WEBSITE_INSTANCE_ID:-local}-%d{yyyy-MM-dd}.%i.log
       archivedFileCount: 10
       maxFileSize: 100KB
-      timeZone: UTC
