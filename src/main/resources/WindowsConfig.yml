@@ -17,6 +17,15 @@ logging:
 
   appenders:
     - type: console
+    - type: file
+      # Current log file per app + slot + computer + instance
+      currentLogFilename: ${LOG_DIR_PATH:-C:/mounts/customLogs/WindowsApp}/iservice-${WEBSITE_SITE_NAME:-unknown}-${WEBSITE_SLOT_NAME:-unknown}-${COMPUTERNAME:-unknown}-${WEBSITE_INSTANCE_ID:-noiid}.log
+
+      # Rotated log pattern
+      archivedLogFilenamePattern: ${LOG_DIR_PATH:-C:/mounts/customLogs/WindowsApp}/iservice-${WEBSITE_SITE_NAME:-unknown}-${WEBSITE_SLOT_NAME:-unknown}-${COMPUTERNAME:-unknown}-${WEBSITE_INSTANCE_ID:-noiid}-%d{yyyy-MM-dd}.%i.log
+
+      archivedFileCount: 10
+      maxFileSize: 100KB
 
     # - type: file
     #   currentLogFilename: ${LOG_DIR_PATH:-C:/mounts/customLogs/WindowsApp}/iservice.log
@@ -27,9 +36,3 @@ logging:
     #   archivedFileCount: 10
     #   maxFileSize: 100KB
     #   timeZone: UTC
-    - type: file
-       # Current log file per app + slot + computer + instance
-       currentLogFilename: ${LOG_DIR_PATH:-C:/mounts/customLogs/WindowsApp}/iservice-${WEBSITE_SITE_NAME:-unknown}-${WEBSITE_SLOT_NAME:-unknown}-${COMPUTERNAME:-unknown}.log
-       
-       # Rotated log pattern
-       archivedLogFilenamePattern: ${LOG_DIR_PATH:-C:/mounts/customLogs/WindowsApp}/iservice-${WEBSITE_SITE_NAME:-unknown}-${WEBSITE_SLOT_NAME:-unknown}-${COMPUTERNAME:-unknown}.%i.log
